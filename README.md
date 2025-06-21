@@ -104,5 +104,139 @@ User feedback for properties.
 - **Indexing**: Applied to frequently queried fields such as `user_id`, `property_id`, and `booking_id` for faster lookup.
 - **Caching**: Redis is used to cache frequent read operations like listing properties or retrieving user profiles to reduce database load and improve performance.
 
+## Feature Breakdown
+
+### API Documentation
+
+- Uses the **OpenAPI (Swagger)** standard to document all backend endpoints.
+- Built with **Django REST Framework (DRF)** to expose RESTful APIs.
+- Includes **GraphQL** support for flexible and efficient client-side data querying.
+
+---
+
+### User Authentication
+
+**Endpoints:**
+```
+
+POST /users/              # Register a new user
+GET /users/{user\_id}/     # Get user profile
+PUT /users/{user\_id}/     # Update profile
+DELETE /users/{user\_id}/  # Delete user
+
+```
+
+**Features:**
+- User registration and login
+- Token-based authentication
+- Profile management (view, update, delete)
+
+---
+
+### Property Management
+
+**Endpoints:**
+```
+
+GET /properties/              # List all properties
+POST /properties/             # Add a new property
+GET /properties/{id}/         # Get property details
+PUT /properties/{id}/         # Update property information
+DELETE /properties/{id}/      # Delete a property
+
+```
+
+**Features:**
+- Create, update, and delete property listings
+- Associate listings with host users
+- Manage visibility and accuracy of property information
+
+---
+
+### Booking System
+
+**Endpoints:**
+```
+
+GET /bookings/              # List all bookings
+POST /bookings/             # Create a new booking
+GET /bookings/{id}/         # View booking details
+PUT /bookings/{id}/         # Update a booking
+DELETE /bookings/{id}/      # Cancel a booking
+
+```
+
+**Features:**
+- Reserve properties for specific dates
+- Modify or cancel existing bookings
+- Manage check-in/check-out details
+
+---
+
+### Payment Processing
+
+**Endpoints:**
+```
+
+POST /payments/             # Process a new payment
+
+```
+
+**Features:**
+- Handle secure payment transactions
+- Link payments to specific bookings
+- Integration-ready with Stripe or PayPal
+
+---
+
+### Review System
+
+**Endpoints:**
+```
+
+GET /reviews/               # View all reviews
+POST /reviews/              # Submit a new review
+GET /reviews/{id}/          # View a specific review
+PUT /reviews/{id}/          # Edit a review
+DELETE /reviews/{id}/       # Delete a review
+
+```
+
+**Features:**
+- Guests can rate and review properties
+- Users can update or remove their own reviews
+- Strengthens transparency on the platform
+
+---
+
+### Database Optimizations
+
+- **Indexing**: Indexes applied to commonly queried fields such as `user_id`, `property_id`, and `booking_id`.
+- **Caching**: Redis is used to cache frequently requested data, reducing database load and improving response times.
+
+---
+
+### API Security
+
+- **Authentication & Authorization**: Controls access to data and actions based on user identity.
+- **HTTPS Enforcement**: Encrypts all traffic to protect data in transit.
+- **Input Validation**: Sanitizes input to prevent SQL injection and other attacks.
+- **Password Hashing**: Passwords are securely stored using cryptographic hashing.
+- **Rate Limiting**: Throttles requests to prevent abuse and DoS attacks.
+- **RBAC (Role-Based Access Control)**: Limits sensitive actions based on user roles (e.g., guest, host).
+
+---
+
+### CI/CD Pipeline Integration
+
+- **Continuous Integration**: Automatically runs tests and checks on new code pushes.
+- **Continuous Deployment**: Automatically deploys updates to staging/production environments.
+- **Improved Code Quality**: Enforces formatting and linting rules across all contributors.
+- **Bug Detection**: Catches bugs early with automated testing workflows.
+- **Team Collaboration**: Enables frequent code merging and syncing among team members.
+- **Scalability**: Designed for growth without sacrificing stability or speed.
+```
+
+
 
 
